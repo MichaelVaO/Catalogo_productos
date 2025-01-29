@@ -1,6 +1,7 @@
 package com.legalSuite.Catalogo_productos.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,9 +34,9 @@ public class ProductoEntity {
     private String descripcion;
 
     @NotNull(message = "El precio no puede ser nulo")
-    @Min(value = 1, message = "El precio debe ser mayor a 0")
+    @DecimalMin(value = "0.01", message = "El precio debe ser mayor a 0")
     @Column(name = "precio")
-    private double precio;
+    private Double precio;
 
     @CreationTimestamp
     @Column(name = "fecha_creacion", updatable = false)
