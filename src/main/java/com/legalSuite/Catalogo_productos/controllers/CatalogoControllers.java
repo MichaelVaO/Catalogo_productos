@@ -63,7 +63,6 @@ public class CatalogoControllers {
             );
         }
 
-        // ... lógica de guardado
         return CompletableFuture.completedFuture(
                 ResponseEntity.ok().body("Producto guardado")
         );
@@ -106,6 +105,7 @@ public class CatalogoControllers {
                 .exceptionally(ex -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                         .body(Map.of("error", "Error interno al buscar los productos: " + ex.getMessage())));
     }
+
 
     @GetMapping("/{id}")
     public CompletableFuture<ResponseEntity<?>> getProductobyId(@PathVariable Long id) {
